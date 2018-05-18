@@ -127,6 +127,18 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        opacity: 0; /* hide element */
+        transform: translateY(30px); 
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
 /* pseudoclass for anchor */
 .btn:link,
 .btn:visited {
@@ -136,6 +148,7 @@ body {
     display: inline-block; /* use if want to give padding width or height to elements */
     border-radius: 100px;
     transition: all, 0.2s; /* transition has to be on parent element */
+    position: relative;
 }
 
 .btn:hover {
@@ -151,4 +164,31 @@ body {
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards; /* Apply keyframe properties before animation starts */
 }
