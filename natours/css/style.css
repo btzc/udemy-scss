@@ -56,6 +56,7 @@ body {
     left: 50%;
     /* 50% are not in relation of parent element, but of element it's applying to */
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .heading-primary {
@@ -64,6 +65,7 @@ body {
 
     /* determines if back part of element when transformed is visible or not */
     backface-visibility: hidden; /* used to stop shake in animation */
+    margin-bottom: 60px;
 }
 
 /* display: block occupy entire width they have available. Also create line breaks after and before them */
@@ -123,4 +125,30 @@ body {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+/* pseudoclass for anchor */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /* use if want to give padding width or height to elements */
+    border-radius: 100px;
+    transition: all, 0.2s; /* transition has to be on parent element */
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* x y blur colour */
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* x y blur colour */
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
 }
