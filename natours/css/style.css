@@ -61,6 +61,9 @@ body {
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+
+    /* determines if back part of element when transformed is visible or not */
+    backface-visibility: hidden; /* used to stop shake in animation */
 }
 
 /* display: block occupy entire width they have available. Also create line breaks after and before them */
@@ -69,6 +72,15 @@ body {
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    /*
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+    */
 }
 
 .heading-primary-sub {
@@ -76,4 +88,39 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+
+    animation: moveInRight 1s ease-out;
+}
+
+/* for browser performance, usually only want to animate opacity and transform property */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0; /* hide element */
+        transform: translateX(-100px); 
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0; /* hide element */
+        transform: translateX(100px); 
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
